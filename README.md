@@ -1,10 +1,9 @@
-# 
-#  Author      : A.R. Winters
-#  Version     : 1.0
-#  Company     : NForce-IT
-#  Date        : 07-06-2016
-#
-#  Description : This is a MEAN boilerplate, for createing responsive SPA`s.
+Author      : A.R. Winters
+Version     : 1.0
+Company     : NForce-IT
+Date        : 07-06-2016
+
+Description : This is a MEAN boilerplate, for createing responsive SPA`s.
 
 ## NForce IT SPA MEAN Boilerplate
 
