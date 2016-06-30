@@ -1,6 +1,15 @@
+import { uuid } from '../utils/uuid';
+
 export class User {
 
-    constructor(public email: string, public password: string, public firstName?: string, public lastName?: string){}
+    id: string;
+    constructor(public email: string,
+                public password: string,
+                public firstName?: string,
+                public lastName?: string) {
+        this.id = uuid();
+    }
+
 }
 
 /*

@@ -7,6 +7,7 @@ import { HTTP_PROVIDERS } from "@angular/http";
 
 import { AppComponent } from "./app.component";
 import { AuthService } from "./auth/auth.service";
+import { UserService } from "./auth/user.service";
 import { ErrorService } from "./errors/error.service";
 import { BreadcrumbService } from "./breadcrumbs/breadcrumb-service";
 /* import { LoggerService } from "./logger/logger.service"; */
@@ -29,7 +30,7 @@ let toastOptions = {
     hideMethod: "fadeOut"
 };
 
-bootstrap(AppComponent, [AuthService, ErrorService, BreadcrumbService, ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy}), HTTP_PROVIDERS]);
+bootstrap(AppComponent, [AuthService, UserService, ErrorService, BreadcrumbService, ROUTER_PROVIDERS, provide(LocationStrategy, {useClass: HashLocationStrategy}), HTTP_PROVIDERS]);
 
 
 /*

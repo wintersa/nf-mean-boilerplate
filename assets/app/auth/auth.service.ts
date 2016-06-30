@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Http, Headers } from "@angular/http";
 import 'rxjs/Rx';
+import {Subject, BehaviorSubject} from 'rxjs';
 import { Observable } from "rxjs/Observable";
 
 import { User } from "./user";
@@ -9,6 +10,7 @@ import { User } from "./user";
 @Injectable()
 export class AuthService {
     private _userFirstName;
+    currentUser: Subject<User> = new BehaviorSubject<User>(null);
     
     constructor(private _http: Http) {}
 
@@ -48,7 +50,6 @@ export class AuthService {
         this._userFirstName = Firstname;
     };
 }
-
 
 /*
  Copyright 2016 NForce IT - A.R.Winters . All Rights Reserved.

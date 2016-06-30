@@ -6,7 +6,7 @@
         'rxjs':                       'js/vendor/rxjs',
         '@angular':                   'js/vendor/@angular',
         'primeng':                    'js/vendor/primeng',
-        'ng2-toastr':                 'js/vendor/ng2-toastr',
+        'ng2-toastr':                 'js/vendor/ng2-toastr'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
