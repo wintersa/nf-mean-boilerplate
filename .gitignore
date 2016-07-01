@@ -41,6 +41,7 @@ tools/typings/tsd
 tmp
 
 # NForce IT Customization
+app.js
 **/js/app
 **/js/vendor
 .DS_Store

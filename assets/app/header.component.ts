@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ROUTER_DIRECTIVES } from "@angular/router";
 
 import { AuthService } from "./auth/auth.service";
+import { UserService } from "./auth/user.service";
+import { User } from "./auth/user";
 /* import { BreadcrumbItem } from "./breadcrumbs/breadcrumb-item"; */
 import { BreadcrumbComponent } from "./breadcrumbs/breadcrumb.component";
 /* import { BreadcrumbService } from "./breadcrumbs/breadcrumb-service"; */
@@ -65,14 +67,16 @@ import { BreadcrumbComponent } from "./breadcrumbs/breadcrumb.component";
       <nf-breadcrumb></nf-breadcrumb>
     </header>   
     `,
-    directives: [ROUTER_DIRECTIVES, BreadcrumbComponent]
+    directives: [ROUTER_DIRECTIVES, BreadcrumbComponent],
+    inputs: ['currentUser']
 })
 
 export class HeaderComponent implements OnInit{
     userFirstName: string;
+    currentUser: User;
     /* breadCrumbData: Array<BreadcrumbItem>; */
 
-    constructor(private _authService:AuthService, private _router:Router) {}
+    constructor(private _authService:AuthService, private _router:Router, public  _userService:UserService) {}
     /* constructor(private _authService:AuthService, private _router:Router, private _breadcrumbService:BreadcrumbService) {} */
 
     isLoggedIn() {
@@ -87,7 +91,12 @@ export class HeaderComponent implements OnInit{
 
     ngOnInit() {
         this.userFirstName = this._authService.getLoggedInUser();
-        /* this.breadCrumbData = this._breadcrumbService.getBreadCrumbData(); */
+        this._userService.currentUser
+            .subscribe(
+                (user: User) => {
+                    this.currentUser = user;
+                });
+        /* this.breadCrumbData = this._breadcrumbService.getBread CrumbData(); */
     }
 }
 

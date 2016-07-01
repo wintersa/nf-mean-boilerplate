@@ -1,7 +1,6 @@
-import { Injectable, bind } from "@angular/core";
-import 'rxjs/Rx';
-import {Subject, BehaviorSubject} from 'rxjs';
-
+import { Injectable } from "@angular/core";
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from "./user";
 
 
@@ -12,12 +11,9 @@ export class UserService {
 
     public setCurrentUser(newUser: User): void {
         this.currentUser.next(newUser);
+        console.log(newUser.firstName);
     }
 }
-
-export var userServiceInjectables: Array<any> = [
-    bind(UserService).toClass(UserService)
-];
 
 /*
  Copyright 2016 NForce IT - A.R.Winters . All Rights Reserved.

@@ -2,7 +2,7 @@
 
     // map tells the System loader where to look for things
     var map = {
-        'app':                        'js/app', // 'dist',
+        'app':                        'js/app',
         'rxjs':                       'js/vendor/rxjs',
         '@angular':                   'js/vendor/@angular',
         'primeng':                    'js/vendor/primeng',
