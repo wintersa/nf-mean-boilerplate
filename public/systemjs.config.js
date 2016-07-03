@@ -5,16 +5,18 @@
         'app':                        'js/app',
         'rxjs':                       'js/vendor/rxjs',
         '@angular':                   'js/vendor/@angular',
+        'primeui':                    'js/vendor/primeui',
         'primeng':                    'js/vendor/primeng',
-        'ng2-toastr':                 'js/vendor/ng2-toastr'
+        'uuid':                       'js/vendor/uuid'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         'app':                        { main: 'boot.js',  defaultExtension: 'js' },
         'rxjs':                       { defaultExtension: 'js' },
+        'primeui':                    { defaultExtension: 'js' },
         'primeng':                    { defaultExtension: 'js' },
-        'ng2-toastr':                 { defaultExtension: 'js' }
+        'uuid':                       { main: 'uuid.js' ,defaultExtension: 'js' }
     };
 
     var packageNames = [

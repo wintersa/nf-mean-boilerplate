@@ -1,8 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Router, ROUTER_DIRECTIVES } from "@angular/router";
 
 import { AuthService } from "./auth/auth.service";
-import { UserService } from "./auth/user.service";
 import { User } from "./auth/user";
 /* import { BreadcrumbItem } from "./breadcrumbs/breadcrumb-item"; */
 import { BreadcrumbComponent } from "./breadcrumbs/breadcrumb.component";
@@ -56,7 +55,7 @@ import { BreadcrumbComponent } from "./breadcrumbs/breadcrumb.component";
                                 <li role="separator" class="divider"></li>
                                 <li><a [routerLink]="['/auth/signin']" *ngIf="!isLoggedIn()">Signin</a></li>
                                 <li><a [routerLink]="['/auth/signup']">Signup</a></li>
-                                <li><a [routerLink]="['/auth/logout']" (click)="onLogout()" *ngIf="isLoggedIn()">Logout</a></li>                                
+                                <li><a [routerLink]="['/auth/signin']" (click)="onLogout()" *ngIf="isLoggedIn()">Logout</a></li>                                
                             </ul>
                          </li>
                     </ul>
@@ -68,22 +67,20 @@ import { BreadcrumbComponent } from "./breadcrumbs/breadcrumb.component";
     </header>   
     `,
     directives: [ROUTER_DIRECTIVES, BreadcrumbComponent],
-    inputs: ['currentUser']
 })
 
 export class HeaderComponent implements OnInit{
     userFirstName: string;
-    currentUser: User;
     /* breadCrumbData: Array<BreadcrumbItem>; */
 
-    constructor(private _authService:AuthService, private _router:Router, public  _userService:UserService) {}
+    constructor(private _authService:AuthService, private _router:Router) {}
     /* constructor(private _authService:AuthService, private _router:Router, private _breadcrumbService:BreadcrumbService) {} */
 
     isLoggedIn() {
         return this._authService.isLoggedIn();
     }
 
-    /* Clear the localStorage and navigate back to signin page */
+    /* Clear the localStorage and navigate always back to signin page after logout*/
     onLogout() {
         this._authService.logout();
         this._router.navigate(['/auth/signin']);
@@ -91,11 +88,7 @@ export class HeaderComponent implements OnInit{
 
     ngOnInit() {
         this.userFirstName = this._authService.getLoggedInUser();
-        this._userService.currentUser
-            .subscribe(
-                (user: User) => {
-                    this.currentUser = user;
-                });
+
         /* this.breadCrumbData = this._breadcrumbService.getBread CrumbData(); */
     }
 }

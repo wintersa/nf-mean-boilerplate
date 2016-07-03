@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit{
     myForm: ControlGroup;
     /* msgs: Messages[] = []; */
 
-    constructor(private _fb:FormBuilder, private _authService: AuthService, private _router: Router, private _errorService: ErrorService) {}
+    constructor(private _fb:FormBuilder, private _authService:AuthService, private _router:Router, private _errorService:ErrorService) {}
 
     onSubmit() {
         const user = new User(this.myForm.value.email, this.myForm.value.password)
@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit{
                 data => {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.userId);
-                    this._authService.setLoggedInUser(data.userFirstName);
+                    this._authService.setLoggedInUser(data.userFirstName);;
                     this._router.navigateByUrl('/');
                 },
                 error => {

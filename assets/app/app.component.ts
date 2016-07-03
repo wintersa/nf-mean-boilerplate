@@ -3,7 +3,6 @@ import { Router, Routes, ROUTER_DIRECTIVES } from "@angular/router";
 
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AuthService } from "./auth/auth.service";
-import { UserService } from "./auth/user.service";
 import { AuthenticationComponent } from "./auth/authentication.component";
 import { HeaderComponent } from "./header.component";
 import { BreadcrumbService} from "./breadcrumbs/breadcrumb-service";
@@ -31,7 +30,7 @@ import { User } from "./auth/user";
     {path: '/auth', component: AuthenticationComponent}
 ])
 export class AppComponent implements OnInit {
-    constructor(private _authService:AuthService, private _router:Router, public _userService:UserService) {}
+    constructor(private _authService:AuthService, private _router:Router) {}
     /* constructor(private _authService:AuthService, private _router:Router, private _loggerService:LoggerService) {} */
 
     isLoggedIn() {

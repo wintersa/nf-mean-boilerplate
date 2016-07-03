@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ControlGroup, Validators, Control } from "@angular/common";
 import { Router } from "@angular/router";
-/* import { MenuItem } from 'primeng/primeng'; */
+import { MenuItem } from 'primeng/primeng';
 
 import { User } from "./user";
 import { AuthService } from "./auth.service";
 import { ErrorService } from "../errors/error.service";
-/* import { BreadcrumbItem } from "../breadcrumbs/breadcrumb-item"; */
-import { BreadcrumbService } from "../breadcrumbs/breadcrumb-service";
+/*import { BreadcrumbItem } from "../breadcrumbs/breadcrumb-item";
+import { BreadcrumbService } from "../breadcrumbs/breadcrumb-service";*/
 
 @Component({
     selector: 'nf-signup',
@@ -38,9 +38,10 @@ import { BreadcrumbService } from "../breadcrumbs/breadcrumb-service";
 
 export class SignupComponent implements OnInit {
     myForm: ControlGroup;
-    /*private items: MenuItem[]; */
-
-    constructor(private _router:Router, private _fb:FormBuilder, private _authService:AuthService, private _errorService:ErrorService, private _breadcrumbService:BreadcrumbService) {}
+    private items: MenuItem[];
+    /* private breadcrumbData = new BreadcrumbItem(); */
+    
+    constructor(private _router:Router, private _fb:FormBuilder, private _authService:AuthService, private _errorService:ErrorService) {}
 
     onSubmit() {
         const user = new User(this.myForm.value.email, this.myForm.value.password, this.myForm.value.firstName, this.myForm.value.lastName);
@@ -49,13 +50,16 @@ export class SignupComponent implements OnInit {
             .subscribe(
                 data => console.log(data),
                 error => this._errorService.handleError(error)
+
             )
-        this._router.navigate(['/auth/signin']);
-    }
+            this._router.navigate(['/auth/signin']);
+        }
 
     ngOnInit() {
-        /*this.items.push({label:'Authentication', routerLink:  ['/auth'] });
-        this.items.push({label:'Signin', routerLink:  ['/auth/signin'] });*/
+        this.items.push({label:'Authentication', routerLink:  ['/auth'] });
+        this.items.push({label:'Signin', routerLink:  ['/auth/signin'] });
+
+
 
         this.myForm = this._fb.group({
             firstName: ['', Validators.required],
@@ -69,9 +73,10 @@ export class SignupComponent implements OnInit {
 
         /* const tony = new BreadcrumbItem;
         tony.location = "Tony";
-        tony.url = "/auth/sigin"
+        tony.url = "/auth/sigin" */
 
-       this._breadcrumbService.updateBreadCrumbData(tony);*/
+
+        /* this._breadcrumbService.updateBreadCrumbData(this.breadcrumbData); */
     }
 
     // This is a custom validator with RegEx for email validation

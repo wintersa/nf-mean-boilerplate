@@ -4,10 +4,10 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/Rx';
 import { User } from "./user";
 
-
 @Injectable()
 export class AuthService {
     private _userFirstName;
+
     
     constructor(private _http: Http) {}
 

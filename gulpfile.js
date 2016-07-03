@@ -54,8 +54,20 @@ gulp.task('vendor', function() {
         .pipe(gulp.dest(vendor + '/systemjs/'));
 
     //zonejs
-    return gulp.src('node_modules/zone.js/**')
+    gulp.src('node_modules/zone.js/**')
         .pipe(gulp.dest(vendor + '/zone.js/'));
+
+    //primeui
+     gulp.src('node_modules/primeui/**')
+        .pipe(gulp.dest(vendor + '/primeui/'));
+
+    //primeng
+     gulp.src('node_modules/primeng/**')
+        .pipe(gulp.dest(vendor + '/primeng/'));
+
+    //uuid
+    gulp.src('node_modules/uuid/**')
+        .pipe(gulp.dest(vendor + '/uuid/'));
 });
 
 gulp.task('watch', function () {

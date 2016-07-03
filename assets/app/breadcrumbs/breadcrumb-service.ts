@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
+import { MenuItem } from 'primeng/primeng';
 import { BreadcrumbItem } from "./breadcrumb-item";
 
 
 @Injectable()
 export class BreadcrumbService {
     private _BreadCrumbData;
+    private items: MenuItem[];
 
     constructor() {}
 
@@ -14,6 +16,7 @@ export class BreadcrumbService {
 
     updateBreadCrumbData(breadcrumbData: BreadcrumbItem): void {
         this._BreadCrumbData = breadcrumbData;
+        /*this.items.push({breadcrumbData});*/
     };
 
     /* insertItem(item: ListItem) {
