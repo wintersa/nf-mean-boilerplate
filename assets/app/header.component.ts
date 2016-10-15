@@ -55,7 +55,7 @@ import { BreadcrumbComponent } from "./breadcrumbs/breadcrumb.component";
                                 <li role="separator" class="divider"></li>
                                 <li><a [routerLink]="['/auth/signin']" *ngIf="!isLoggedIn()">Signin</a></li>
                                 <li><a [routerLink]="['/auth/signup']">Signup</a></li>
-                                <li><a [routerLink]="['/auth/signin']" (click)="onLogout()" *ngIf="isLoggedIn()">Logout</a></li>                                
+                                <li><a (click)="onLogout()" *ngIf="isLoggedIn()">Logout</a></li>                                
                             </ul>
                          </li>
                     </ul>
